@@ -19,6 +19,7 @@ pointlog
 hiveos
 
 user_role
+role_perm
 user_farm
 user_miner
 user_fs
