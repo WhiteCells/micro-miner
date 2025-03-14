@@ -23,10 +23,12 @@ func (m *UserController) Login(ctx *gin.Context) {
 	var in pb.LoginReq
 	if err := ctx.ShouldBind(&in); err != nil {
 		rsp.Error(ctx, http.StatusBadRequest, err.Error(), "")
+		return
 	}
 	out, err := m.userGrpcClient.Login(ctx, &in)
 	if err != nil {
 		rsp.Error(ctx, http.StatusInternalServerError, err.Error(), "")
+		return
 	}
 	rsp.LoginSuccess(ctx, http.StatusOK, "", out.GetMsg(), out.GetJwt(), out.GetRole())
 }
@@ -35,10 +37,12 @@ func (m *UserController) Register(ctx *gin.Context) {
 	var in pb.AddUserReq
 	if err := ctx.ShouldBind(&in); err != nil {
 		rsp.Error(ctx, http.StatusBadRequest, err.Error(), "")
+		return
 	}
 	out, err := m.userGrpcClient.AddUser(ctx, &in)
 	if err != nil {
 		rsp.Error(ctx, http.StatusInternalServerError, err.Error(), "")
+		return
 	}
 	rsp.Success(ctx, http.StatusOK, "", out.GetMsg())
 }

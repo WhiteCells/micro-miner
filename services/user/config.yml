@@ -1,0 +1,37 @@
+server:
+  host: localhost
+  port: 50011
+
+mysql:
+  host: localhost
+  port: 33061
+  user: root
+  password: micro
+  dbname: micro-user
+  max_idle_conns: 10
+  max_open_conns: 100
+
+redis:
+  host: localhost
+  port: 7000
+
+kafka:
+  brokers:
+    - localhost:19091
+    - localhost:19092
+    - localhost:19093
+    - localhost:19094
+    - localhost:19095
+    - localhost:19096
+
+
+jwt:
+  secret: hello#:)
+  expire: 24 # hours
+
+log:
+  level: debug
+  filename: ./logs/micro-user.log
+  max_size: 100
+  max_age: 30
+  max_backups: 10

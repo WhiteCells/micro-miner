@@ -6,14 +6,19 @@ import (
 	"github.com/spf13/viper"
 )
 
+type kafkaConfig struct {
+	Brokers []string `mapstructure:"brokers"`
+}
+
 type ServerConfig struct {
 	Server struct {
-		Port int `mapstructure:"port"`
+		Host string `mapstructure:"host"`
+		Port string `mapstructure:"port"`
 	} `mapstructure:"server"`
 
 	MySQL struct {
 		Host         string `mapstructure:"host"`
-		Port         int    `mapstructure:"port"`
+		Port         string `mapstructure:"port"`
 		User         string `mapstructure:"user"`
 		Password     string `mapstructure:"password"`
 		DBName       string `mapstructure:"dbname"`
@@ -23,8 +28,10 @@ type ServerConfig struct {
 
 	Redis struct {
 		Host string `mapstructure:"host"`
-		Port int    `mapstructure:"port"`
+		Port string `mapstructure:"port"`
 	} `mapstructure:"redis"`
+
+	Kafka kafkaConfig `mapstructure:"kafka"`
 
 	JWT struct {
 		Secret string `mapstructure:"secret"`
@@ -57,4 +64,8 @@ func InitConfig(configFile string, configType string) error {
 	}
 
 	return nil
+}
+
+func GetServerHostPort() string {
+	return Config.Server.Host + Config.Server.Port
 }

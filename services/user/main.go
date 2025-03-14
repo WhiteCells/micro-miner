@@ -6,9 +6,21 @@ import (
 
 	"micro-user/grpcs"
 	pb "micro-user/pb/userpb"
+	"micro-user/utils"
 
 	"google.golang.org/grpc"
 )
+
+func init() {
+	if err := utils.InitConfig("config.yml", "yml"); err != nil {
+		log.Fatalf("init config error: %v", err)
+	}
+	if err := utils.InitDB(); err != nil {
+		log.Fatalf("init db error: %v", err)
+	}
+	utils.NewKafkaProducer(utils.Config.Kafka.Brokers)
+	utils.NewKafkaConsumer(utils.Config.Kafka.Brokers)
+}
 
 func main() {
 	listener, err := net.Listen("tcp", ":50011")

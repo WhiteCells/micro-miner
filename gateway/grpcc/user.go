@@ -8,7 +8,7 @@ import (
 )
 
 func NewUserGrpcClient() pb.UserServiceClient {
-	client, err := grpc.NewClient("localhost:9001", grpc.WithTransportCredentials((insecure.NewCredentials())))
+	client, err := grpc.NewClient("localhost:50011", grpc.WithTransportCredentials((insecure.NewCredentials())))
 	if err != nil {
 		//
 		return nil
