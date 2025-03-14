@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package user;
 
-option go_package = "./;user";
+option go_package = "./userpb;user";
 
 service UserService {
     rpc Login(LoginReq) returns (LoginRsp);
