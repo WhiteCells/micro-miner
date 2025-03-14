@@ -10,22 +10,22 @@ import (
 )
 
 type UserController struct {
-	userGrpcClient pb.UserServiceClient
+	// userGrpcClient pb.UserServiceClient
 }
 
 func NewUserController() *UserController {
 	return &UserController{
-		userGrpcClient: grpcc.NewUserGrpcClient(),
+		// userGrpcClient: grpcc.NewUserGrpcClient(),
 	}
 }
 
-func (m *UserController) Login(ctx *gin.Context) {
+func (UserController) Login(ctx *gin.Context) {
 	var in pb.LoginReq
 	if err := ctx.ShouldBind(&in); err != nil {
 		rsp.Error(ctx, http.StatusBadRequest, err.Error(), "")
 		return
 	}
-	out, err := m.userGrpcClient.Login(ctx, &in)
+	out, err := grpcc.UserGrpcClient.Login(ctx, &in)
 	if err != nil {
 		rsp.Error(ctx, http.StatusInternalServerError, err.Error(), "")
 		return
@@ -33,13 +33,13 @@ func (m *UserController) Login(ctx *gin.Context) {
 	rsp.LoginSuccess(ctx, http.StatusOK, "", out.GetMsg(), out.GetJwt(), out.GetRole())
 }
 
-func (m *UserController) Register(ctx *gin.Context) {
+func (UserController) Register(ctx *gin.Context) {
 	var in pb.AddUserReq
 	if err := ctx.ShouldBind(&in); err != nil {
 		rsp.Error(ctx, http.StatusBadRequest, err.Error(), "")
 		return
 	}
-	out, err := m.userGrpcClient.AddUser(ctx, &in)
+	out, err := grpcc.UserGrpcClient.AddUser(ctx, &in)
 	if err != nil {
 		rsp.Error(ctx, http.StatusInternalServerError, err.Error(), "")
 		return

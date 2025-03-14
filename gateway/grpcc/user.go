@@ -2,16 +2,24 @@ package grpcc
 
 import (
 	pb "gateway/pb/userpb"
+	"log"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-func NewUserGrpcClient() pb.UserServiceClient {
-	client, err := grpc.NewClient("localhost:50011", grpc.WithTransportCredentials((insecure.NewCredentials())))
+var UserGrpcClient pb.UserServiceClient
+
+func InitUserGrpcClient() {
+	client, err := grpc.NewClient(
+		"localhost:50011",
+		// "dns:///micro-user",
+		grpc.WithTransportCredentials((insecure.NewCredentials())),
+		// grpc.WithDefaultServiceConfig(`{"loadBalancingPolicy": "round_robin"}`),
+	)
 	if err != nil {
 		//
-		return nil
+		log.Fatalf("failed to init user grpc client: %v", err)
 	}
-	return pb.NewUserServiceClient(client)
+	UserGrpcClient = pb.NewUserServiceClient(client)
 }

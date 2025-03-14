@@ -1,9 +1,7 @@
 package main
 
 import (
-	"log"
-	"os"
-
+	"gateway/grpcc"
 	"gateway/route"
 	"gateway/utils"
 
@@ -11,12 +9,9 @@ import (
 )
 
 func init() {
-	if err := utils.InitConfig("config", "yml"); err != nil {
-		//
-		log.Fatalf("init config error: %v", err)
-		os.Exit(1)
-	}
-
+	utils.InitConfig("config.yml", "yml")
+	utils.InitCache()
+	grpcc.InitUserGrpcClient()
 }
 
 func main() {
@@ -24,5 +19,7 @@ func main() {
 	ctx := gin.Default()
 
 	route.RegisterRoutes(ctx)
-	ctx.Run()
+	if err := ctx.Run(); err != nil {
+		//
+	}
 }

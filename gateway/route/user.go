@@ -16,7 +16,7 @@ func NewUserRoute() *UserRoute {
 	}
 }
 
-func (m *UserRoute) RegisterUserRoutes(r *gin.RouterGroup) {
+func (m *UserRoute) Routes(r *gin.RouterGroup) {
 	user := r.Group("/user")
 	{
 		user.POST("/login", m.userController.Login)

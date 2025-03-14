@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"errors"
+	"log"
 
 	"github.com/spf13/viper"
 )
@@ -10,12 +10,18 @@ type ServerConfig struct {
 	Rpc struct {
 		user string `mapstructure:"user"`
 		farm string `mapstructure:"farm"`
-	} `mapstructure:"rpc"`
+	} `mapstructure:"rpc-server"`
 
 	JWT struct {
 		Secret string `mapstructure:"secret"`
 		Expire int    `mapstructure:"expire"`
 	} `mapstructure:"jwt"`
+
+	Redis redisConfig `mapstructure:"redis"`
+}
+
+type redisConfig struct {
+	Address []string `mapstructure:"address"`
 }
 
 var Config ServerConfig
@@ -26,12 +32,12 @@ func InitConfig(configFile string, configType string) error {
 
 	err := viper.ReadInConfig()
 	if err != nil {
-		return errors.New("Failed to read config " + err.Error())
+		log.Fatalf("failed to read config: %v", err)
 	}
 
 	err = viper.Unmarshal(&Config)
 	if err != nil {
-		return errors.New("Failed to Unmarshal config " + err.Error())
+		log.Fatalf("failed to read unmarshal config: %v", err)
 	}
 
 	return nil
