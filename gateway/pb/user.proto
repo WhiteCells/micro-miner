@@ -2,16 +2,40 @@ syntax = "proto3";
 
 package user;
 
-option go_package = "./;user";
+option go_package = "./userpb;userpb";
 
 service UserService {
     rpc Login(LoginReq) returns (LoginRsp);
+    rpc AddUser(AddUserReq) returns (AddUserRsp);
+    rpc DelUser(DelUserReq) returns (DelUserRsp);
 }
 
 message LoginReq {
-
+    string email = 1;
+    string password  = 2;
 }
 
 message LoginRsp {
+    string msg = 1;
+    string role = 2;
+    string perm = 3;
+    string jwt = 4;
+}
 
+message AddUserReq {
+    string name = 1;
+    string email = 2;
+    string password = 3;
+}
+
+message AddUserRsp {
+    string msg = 1;
+}
+
+message DelUserReq {
+    int32 i = 1;
+}
+
+message DelUserRsp {
+    string msg = 1;
 }

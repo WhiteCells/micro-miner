@@ -20,5 +20,6 @@ func (m *UserRoute) RegisterUserRoutes(r *gin.RouterGroup) {
 	user := r.Group("/user")
 	{
 		user.POST("/login", m.userController.Login)
+		user.POST("/register", m.userController.Register)
 	}
 }

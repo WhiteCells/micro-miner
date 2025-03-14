@@ -1,7 +1,7 @@
 FROM golang:1.24.0 AS builder
 WORKDIR /miner
 
-COPY go.mod go.sun ./
+COPY go.mod go.sum ./
 RUN go mod tidy
 
 COPY . .

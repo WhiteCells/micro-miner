@@ -8,9 +8,7 @@ import (
 
 type ServerConfig struct {
 	Server struct {
-		Host string `mapstructure:"host"`
-		Port int    `mapstructure:"port"`
-		Mode string `mapstructure:"mode"`
+		Port int `mapstructure:"port"`
 	} `mapstructure:"server"`
 
 	MySQL struct {
@@ -24,9 +22,8 @@ type ServerConfig struct {
 	} `mapstructure:"mysql"`
 
 	Redis struct {
-		Host     string `mapstructure:"host"`
-		Port     int    `mapstructure:"port"`
-		Password string `mapstructure:"password"`
+		Host string `mapstructure:"host"`
+		Port int    `mapstructure:"port"`
 	} `mapstructure:"redis"`
 
 	JWT struct {
@@ -41,15 +38,6 @@ type ServerConfig struct {
 		MaxAge     int    `mapstructure:"max_age"`
 		MaxBackups int    `mapstructure:"max_backups"`
 	} `mapstructure:"log"`
-
-	Mnemonic struct {
-		Key  string `mapstructure:"key"`
-		Path string `mapstructure:"path"`
-	} `mapstructure:"mnemonic"`
-
-	Bsc struct {
-		Api string `mapstructure:"api"`
-	} `mapstructure:"bsc"`
 }
 
 var Config ServerConfig

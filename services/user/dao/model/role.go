@@ -4,7 +4,7 @@ type Role struct {
 	ID   int    `json:"id" gorm:"column:id;type:int;primaryKey;autoIncrement"`
 	Name string `json:"name" gorm:"column:name;type:varchar(255);uniqueIndex"`
 
-	// belong Role
+	// belong User
 	Users []User `json:"users" gorm:"many2many:user_role;"`
 }
 

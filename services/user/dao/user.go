@@ -1,7 +1,7 @@
 package dao
 
 import (
-	"micro-user/model"
+	"micro-user/dao/model"
 	"micro-user/utils"
 )
 
@@ -14,7 +14,8 @@ func (UserDao) AddUser(user *model.User) error {
 }
 
 func (UserDao) DelUser(id int) error {
-	return nil
+	return utils.DB.
+		Delete(&model.User{}, id).Error
 }
 
 func (UserDao) UpdateUser(id int, user *model.User) error {
@@ -36,23 +37,32 @@ func (UserDao) UpdateUserPoints(id int, points float32) error {
 		Update("points", points).Error
 }
 
+func (UserDao) GetAllUsers() (*[]model.User, error) {
+	var users []model.User
+	err := utils.DB.
+		Find(&users).Error
+	return &users, err
+}
+
 func (UserDao) GetUserByID(id int) (*model.User, error) {
 	var user model.User
 	err := utils.DB.
-		Where("id=?", id).First(&user).Error
+		First(&user, id).Error
 	return &user, err
 }
 
 func (UserDao) GetUserByEmail(email string) (*model.User, error) {
 	var user model.User
 	err := utils.DB.
-		Where("email=?", email).First(&user).Error
+		Where("email=?", email).
+		First(&user).Error
 	return &user, err
 }
 
 func (UserDao) GetUserByInviteCode(inviteCode string) (*model.User, error) {
 	var user model.User
 	err := utils.DB.
-		Where("invite_code=?", inviteCode).First(&user).Error
+		Where("invite_code=?", inviteCode).
+		First(&user).Error
 	return &user, err
 }

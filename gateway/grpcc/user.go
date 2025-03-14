@@ -1,7 +1,7 @@
 package grpcc
 
 import (
-	pb "gateway/pb"
+	pb "gateway/pb/userpb"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
