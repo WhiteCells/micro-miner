@@ -7,12 +7,12 @@ import (
 )
 
 type UserRoute struct {
-	userController *controller.UserController
+	userController *controller.SystemController
 }
 
 func NewUserRoute() *UserRoute {
 	return &UserRoute{
-		userController: controller.NewUserController(),
+		userController: controller.NewSystemController(),
 	}
 }
 
@@ -20,6 +20,6 @@ func (m *UserRoute) Routes(r *gin.RouterGroup) {
 	user := r.Group("/user")
 	{
 		user.POST("/login", m.userController.Login)
-		user.POST("/register", m.userController.Register)
+		// user.POST("/register", m.userController.Register)
 	}
 }

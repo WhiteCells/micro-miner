@@ -9,9 +9,9 @@ import (
 )
 
 func init() {
-	utils.InitConfig("config.yml", "yml")
+	utils.InitConfig("gateway.config.yml", "yml")
 	utils.InitCache()
-	grpcc.InitUserGrpcClient()
+	grpcc.InitSystemGrpcClient()
 }
 
 func main() {

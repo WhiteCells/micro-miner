@@ -1,5 +1,6 @@
 package grpcc
 
 func InitGrpcClient() {
-	InitUserGrpcClient()
+	InitSystemGrpcClient()
+	InitHiveosGrpcClient()
 }

@@ -1,0 +1,20 @@
+server:
+  host: localhost
+  port: 8080
+
+grpc-server:
+  - micro-system:
+    host: micro-system # dns
+    port: 50011
+  - micro-farm:
+    host: micro-system
+    port: 50021
+
+redis:
+  address:
+    - localhost:7001
+    - localhost:7002
+    - localhost:7003
+    - localhost:7004
+    - localhost:7005
+    - localhost:7006

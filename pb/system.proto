@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package system;
+
+option go_package = "./;pb";
+
+service SystemService {
+    // user
+    rpc Login(LoginReq) returns (LoginRsp);
+    rpc Register(RegisterReq) returns (RegisterRsp);
+    rpc Logout(LogoutReq) returns(LogoutRsp);
+
+    // farm
+
+
+    // miner
+
+
+    // fs
+
+
+    // wallet
+
+
+    // soft
+
+
+    // pool
+
+
+}
+
+message LoginReq {
+    string email = 1;
+    string password = 2;
+}
+
+message LoginRsp {
+    string msg = 1;
+}
+
+message RegisterReq {
+
+}
+
+message RegisterRsp {
+
+}
+
+message LogoutReq {
+
+}
+
+message LogoutRsp {
+
+}
+

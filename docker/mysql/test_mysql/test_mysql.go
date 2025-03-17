@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	dsn := "root:micro@tcp(127.0.0.1:3309)/micro-user"
+	dsn := "root:micro@tcp(127.0.0.1:3309)/micro-system"
 
 	db, err := sql.Open("mysql", dsn)
 	if err != nil {

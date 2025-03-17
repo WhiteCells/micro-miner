@@ -1,19 +1,19 @@
 services:
-  micro-user-mysql:
+  micro-system-mysql:
     image: mysql:8.0
-    container_name: micro-user-mysql-container
+    container_name: micro-system-mysql-container
     restart: always
     ports:
       - "33061:3306"
     environment:
       MYSQL_ROOT_PASSWORD: micro
-      MYSQL_DATABASE: micro-user
+      MYSQL_DATABASE: micro-system
       # MYSQL_USER: micro
       # MYSQL_PASSWORD: password
     networks:
       - db-network
     volumes:
-      - ./data/micro-user:/var/lib/mysql
+      - ./data/micro-system:/var/lib/mysql
 
   micro-farm-mysql:
     image: mysql:8.0
