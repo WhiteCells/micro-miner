@@ -7,7 +7,7 @@ mysql:
   port: 33061
   user: root
   password: micro
-  dbname: micro-hiveos
+  dbname: micro-system
   max_idle_conns: 10
   max_open_conns: 100
 

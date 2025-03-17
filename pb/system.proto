@@ -40,11 +40,13 @@ message LoginRsp {
 }
 
 message RegisterReq {
-
+    string name = 1;
+    string email = 2;
+    string password = 3;
 }
 
 message RegisterRsp {
-
+    string msg = 1;
 }
 
 message LogoutReq {

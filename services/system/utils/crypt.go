@@ -9,3 +9,7 @@ func CryptoPassword(password string) (string, error) {
 	}
 	return string(hashedPassword), nil
 }
+
+func ValidPassword(userPassword string, inPassword string) error {
+	return bcrypt.CompareHashAndPassword([]byte(userPassword), []byte(inPassword))
+}

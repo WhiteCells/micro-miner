@@ -1,4 +1,4 @@
-package model
+package relation
 
 type RolePerm struct {
 	RoleID uint `json:"role_id" gorm:"primaryKey"`

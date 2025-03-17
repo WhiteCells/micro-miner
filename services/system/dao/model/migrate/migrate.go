@@ -2,6 +2,7 @@ package migrate
 
 import (
 	"micro-system/dao/model"
+	"micro-system/dao/model/relation"
 
 	"gorm.io/gorm"
 )
@@ -21,5 +22,14 @@ func Migrate(db *gorm.DB) {
 		model.Role{},
 		model.User{},
 		model.Wallet{},
+		// relation
+		relation.FarmFs{},
+		relation.FarmMiner{},
+		relation.FsPool{},
+		relation.FsSoft{},
+		relation.MinerFs{},
+		relation.RolePerm{},
+		relation.UserFarm{},
+		relation.UserRole{},
 	)
 }

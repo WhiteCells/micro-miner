@@ -30,16 +30,16 @@ func (SystemController) Login(ctx *gin.Context) {
 	rsp.LoginSuccess(ctx, http.StatusOK, "", out.GetMsg(), "out.GetJwt()", "out.GetRole()")
 }
 
-// func (SystemController) Register(ctx *gin.Context) {
-// 	var in pb.AddUserReq
-// 	if err := ctx.ShouldBind(&in); err != nil {
-// 		rsp.Error(ctx, http.StatusBadRequest, err.Error(), "")
-// 		return
-// 	}
-// 	out, err := grpcc.SystemGrpcClient.AddUser(ctx, &in)
-// 	if err != nil {
-// 		rsp.Error(ctx, http.StatusInternalServerError, err.Error(), "")
-// 		return
-// 	}
-// 	rsp.Success(ctx, http.StatusOK, "", out.GetMsg())
-// }
+func (SystemController) Register(ctx *gin.Context) {
+	var in pb.RegisterReq
+	if err := ctx.ShouldBind(&in); err != nil {
+		rsp.Error(ctx, http.StatusBadRequest, err.Error(), "")
+		return
+	}
+	out, err := grpcc.SystemGrpcClient.Register(ctx, &in)
+	if err != nil {
+		rsp.Error(ctx, http.StatusInternalServerError, err.Error(), "")
+		return
+	}
+	rsp.Success(ctx, http.StatusOK, "", out.GetMsg())
+}

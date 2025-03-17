@@ -1,4 +1,4 @@
-package model
+package relation
 
 type FarmFs struct {
 	FarmID uint `json:"farm_id" gorm:"primaryKey"`

@@ -1,4 +1,4 @@
-package model
+package relation
 
 type FarmMiner struct {
 	FarmID  uint   `json:"farm_id" gorm:"primaryKey"`

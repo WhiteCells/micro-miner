@@ -1,4 +1,4 @@
-package model
+package relation
 
 type UserFarm struct {
 	UserID uint   `json:"user_id" gorm:"primaryKey"`

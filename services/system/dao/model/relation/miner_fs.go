@@ -1,4 +1,4 @@
-package model
+package relation
 
 type MinerFs struct {
 	MinerID uint `json:"miner_id" gorm:"primaryKey"`

@@ -30,7 +30,8 @@ func main() {
 		log.Fatalf("micro-system failed to listen: %v", err)
 	}
 	grpcServer := grpc.NewServer()
-	pb.RegisterSystemServiceServer(grpcServer, &grpcs.SystemServiceServer{})
+	server := grpcs.NewSystemServiceServer()
+	pb.RegisterSystemServiceServer(grpcServer, server)
 	if err := grpcServer.Serve(listener); err != nil {
 		log.Fatalf("micro-system failed to serve: %v", err)
 	}

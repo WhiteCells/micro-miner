@@ -1,4 +1,4 @@
-package model
+package relation
 
 type FsPool struct {
 	FsID   uint `json:"fs_id" gorm:"primaryKey"`

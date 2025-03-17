@@ -8,6 +8,10 @@ import (
 type UserDao struct {
 }
 
+func NewUserDao() *UserDao {
+	return &UserDao{}
+}
+
 func (UserDao) AddUser(user *model.User) error {
 	return utils.DB.
 		Create(user).Error

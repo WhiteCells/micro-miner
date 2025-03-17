@@ -1,4 +1,4 @@
-package model
+package relation
 
 type FsSoft struct {
 	FsID uint `json:"fs_id" gorm:"primaryKey"`

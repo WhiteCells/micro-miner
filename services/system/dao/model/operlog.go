@@ -3,8 +3,8 @@ package model
 import "time"
 
 type Operlog struct {
-	ID     int       `json:"id" gorm:"column:id;type:int;primaryKey;autoIncrement"`
-	UserID int       `json:"user_id" gorm:"column:user_id;type:int"`
+	ID     uint      `json:"id" gorm:"column:id;type:int;primaryKey;autoIncrement"`
+	UserID uint      `json:"user_id" gorm:"column:user_id;type:int"`
 	Time   time.Time `json:"time" gorm:"column:time;type:datetime"`
 	Action string    `json:"action" gorm:"column:action;type:varchar(255)"`
 	Target string    `json:"target" gorm:"column:target;type:varchar(255)"`

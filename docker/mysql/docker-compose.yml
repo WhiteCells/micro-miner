@@ -15,21 +15,6 @@ services:
     volumes:
       - ./data/micro-system:/var/lib/mysql
 
-  micro-farm-mysql:
-    image: mysql:8.0
-    container_name: micro-farm-mysql-container
-    restart: always
-    ports:
-      - "33062:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: micro
-      MYSQL_DATABASE: micro-farm
-      # MYSQL_USER: micro
-      # MYSQL_PASSWORD: password
-    networks:
-      - db-network
-    volumes:
-      - ./data/micro-farm:/var/lib/mysql
 
 networks:
   db-network:
